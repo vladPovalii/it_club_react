@@ -10,7 +10,6 @@ body {
 
 .until {
   margin: 25px;
-  width: 40%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
@@ -56,4 +55,14 @@ body {
   font-weight: bold;
   font-size: 1.8em;
   color: #5e5d5d;
+}
+
+.task {
+  display: flex;
+  cursor: pointer;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
 }

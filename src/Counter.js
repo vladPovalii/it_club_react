@@ -1,9 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 
 const MS_SECOND = 1000;
 const MS_MINUTE = MS_SECOND * 60;
 const MS_HOUR = MS_MINUTE * 60;
 const MS_DAY = MS_HOUR * 24;
+
+class Button extends Component {
+    async componentDidMount() {
+        //const users = await getUsers();
+        console.log('mounted');
+    }
+
+    render() {
+        return <button />
+    }
+}
 
 const Counter = () => {
     const [seconds, setSeconds] = useState('--');
@@ -11,7 +22,7 @@ const Counter = () => {
     const [hours, setHours] = useState('--');
     const [days, setDays] = useState('--');
 
-    const updateCoutdown = () => {
+    const updateCountdown = () => {
         // отримати фінальну дату в мілісекундах
         const finalTime = new Date('2024-03-09T12:00:00').getTime();
 
@@ -28,7 +39,7 @@ const Counter = () => {
     }
 
     useEffect(() => {
-        const id = setInterval(updateCoutdown, 1000)
+        const id = setInterval(updateCountdown, 1000)
 
         return () => clearInterval(id);
     }, [])
@@ -61,7 +72,6 @@ const Counter = () => {
             </div>
             <div className="until__event">Until 31 December 2024</div>
         </div>
-
     )
 }
 
