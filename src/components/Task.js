@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Task = ({ index, body, isChecked, onChange }) => {
+const Task = ({index, body, isChecked, onChange}) => {
     const toggleCheck = () => {
-        onChange(index, { body, isChecked: !isChecked })
+        onChange(index, {body, isChecked: !isChecked})
     }
 
     return (<div className="task" onClick={toggleCheck}>

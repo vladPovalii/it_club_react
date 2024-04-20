@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, {Component, useEffect, useState} from 'react';
 
 const MS_SECOND = 1000;
 const MS_MINUTE = MS_SECOND * 60;
@@ -12,7 +12,7 @@ class Button extends Component {
     }
 
     render() {
-        return <button />
+        return <button/>
     }
 }
 

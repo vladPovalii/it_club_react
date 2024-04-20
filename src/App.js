@@ -1,14 +1,12 @@
-import logo from './logo.svg';
-import Counter from './Counter';
-import './App.css';
-import Tasks from "./Tasks";
+import Counter from "./components/Counter";
+import "./styles/App.css";
+import TodoList from "./components/TodoList";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header" />
-      <Counter />
-        <Tasks />
+      <TodoList />
     </div>
   );
 }
