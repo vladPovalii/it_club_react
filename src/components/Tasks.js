@@ -1,3 +1,5 @@
+import { v4 as guid } from 'uuid';
+
 import React, { useState, useEffect } from 'react';
 
 import {
@@ -6,6 +8,7 @@ import {
    Button,
 } from '@mui/material';
 
+import { STATUS_KEYS } from "../constants";
 import Task from './Task';
 
 const Tasks = () => {
@@ -13,6 +16,7 @@ const Tasks = () => {
     const [newTask, setNewTask] = useState('');
 
     const commitChanges = (tasks) => {
+        console.log(tasks)
         setTasks(tasks);
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
@@ -24,7 +28,7 @@ const Tasks = () => {
     }
 
     const handleAdd = () => {
-        const updatedTasks = [...tasks, { body: newTask, isChecked: false }]
+        const updatedTasks = [...tasks, { body: newTask, status: STATUS_KEYS.TODO, id: guid() }]
         commitChanges(updatedTasks);
 
         setNewTask('');
@@ -46,6 +50,11 @@ const Tasks = () => {
         commitChanges(updatedTasks);
     }
 
+    const handleDelete = (idToRemove) => {
+        const filteredTasks = tasks.filter(({ id }) => id !== idToRemove )
+        commitChanges(filteredTasks);
+    }
+
     return (
         <div className="tasks">
             <h2>Task list:</h2>
@@ -53,7 +62,7 @@ const Tasks = () => {
                 <TextField fullWidth placeholder="Add item..." value={newTask} onChange={onInputChange} />
                 <Button variant="outlined" onClick={handleAdd}>Add</Button>
             </Box>
-            {tasks.map(({ body, isChecked }, i) => <Task index={i} key={i} body={body} onChange={handleChange} isChecked={isChecked} />)}
+            {tasks.map((data) => <Task data={data} key={data.id} onChange={handleChange} onDelete={handleDelete} />)}
         </div>
     )
 }
